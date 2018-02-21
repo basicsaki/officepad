@@ -1,0 +1,2 @@
+class QuestionSuggestion < ApplicationRecord
+end

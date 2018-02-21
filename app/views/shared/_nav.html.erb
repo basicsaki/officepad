@@ -1,0 +1,35 @@
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Office Admin</a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav">
+            <ul class="pull-left">
+            <li><%= link_to "About", "/pages/about"%></li>
+            <li><%= link_to "Contact", "/pages/contact"%></li>
+            <li><%= link_to "Ask Question", "/questions/new"%></li>
+            <li><%= link_to "Browse", "/questions"%></li>
+
+          </ul>
+
+          <ul class="pull-left">
+            <% if user_signed_in? %>
+            Signed in as <%= current_user.name %>. Not you?
+            <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
+            <% else %>
+            <%= link_to "Sign up", new_user_registration_path %> or
+            <%= link_to "Sign in", new_user_session_path %>
+            
+            <%= link_to "Sign in with Google", omniauth_authorize_path(:user,:google_oauth2) %>
+            <% end %>
+
+          </ul>
+          <!--li><%= link_to "Link3", "/path3"%></li-->
+          </ul>
+        </div>
+      </div>
+    </div>

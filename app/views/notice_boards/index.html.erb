@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Notice Boards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notice_boards.each do |notice_board| %>
+      <tr>
+        <td><%= notice_board.user_id %></td>
+        <td><%= notice_board.name %></td>
+        <td><%= notice_board.description %></td>
+        <td><%= link_to 'Show', notice_board %></td>
+        <td><%= link_to 'Edit', edit_notice_board_path(notice_board) %></td>
+        <td><%= link_to 'Destroy', notice_board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Notice Board', new_notice_board_path %>
