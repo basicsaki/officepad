@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221092231) do
+ActiveRecord::Schema.define(version: 20180223053957) do
 
   create_table "answer_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "comment_by"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180221092231) do
     t.integer "downvotes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "text"
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -72,6 +73,12 @@ ActiveRecord::Schema.define(version: 20180221092231) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "suggestions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "user_id"
     t.string "name"
@@ -82,6 +89,13 @@ ActiveRecord::Schema.define(version: 20180221092231) do
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

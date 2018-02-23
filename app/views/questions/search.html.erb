@@ -1,0 +1,90 @@
+
+    <!-- Main -->
+      <section id="main" class="wrapper style1" style="width:100%;padding:40px;">
+        <header class="major" style="margin:10px;width:100%;text-align:left;background:rgba(74, 205, 233, 0.4);border-radius:10px;padding:20px;">
+          <div class="pull-left">
+            <h2 style="margin:5px !important">Search</h2>
+            <p style="color:rgba(0,0,0,0.5);margin:5px !important">Questions matching string <%= @search_string %></p>
+          </div>
+
+          <div style="clear:both">
+          </div>
+        </header>
+
+        <form action="/search">
+        <div class="row" style="width:80%;margin:20px auto;">
+          <div class="8u" style="padding:0px;">
+            <input type="text" placeholder="Search questions across categories.." name="q" >
+          </div>
+          <div class="2u">
+            <button type="submit">Submit</button>
+          </div>
+        </div>
+        </form>
+
+        <div class="container">
+          <div class="row" style="padding-left: 0px !important;margin-left: 0px !important;">
+            <div class="2u" style="padding-left: 0px !important;" >
+              <section style="text-align: left;padding:10px;">
+                <h3>Categories</h3>
+                <ul class="alt">
+                  <% @categories.each do |category| %>
+                    <li><%= link_to category.name,category_questions_path(:category_id=> category.id)%></li>
+                  <% end%>
+                </ul>
+              </section>
+            </div>
+
+            <div class="8u skel-cell-important" style="padding:40px;margin-top:20px;">
+              <% @questions.each do |question|%>
+              <section>
+                <h2>
+                  <%= link_to question.try(:highlight).try(:name) ? question.highlight.name[0].html_safe : question.name,
+                  category_question_path(category_id: question.category_id,id: question.id)
+                  %>   
+                </h2>
+                <p style="font-size:10px;"><%= question.updated_at.to_time.strftime("%d %B %Y")%></p>
+                  <% if question.try(:highlight).try(:description) %>
+                  <% question.highlight.description.each do |snippet| %>
+                    <p><%= markdown(snippet.html_safe) %>...</p>
+                  <% end %>
+                  <% end %>
+              </section>
+              <hr />
+              <% end%>
+              <div style="width: 100%;text-align: center;"> 
+              </div>
+            </div>
+
+          </div>
+          <hr class="major" />
+          
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul>
+  <% @questions.each do |question| %>
+    <li>
+      <h3>
+        
+      </h3>
+      
+    </li>
+  <% end %>
+</ul>

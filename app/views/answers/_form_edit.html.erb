@@ -1,0 +1,31 @@
+<%= form_for @answer,url: category_question_answer_path(category_id: @category.id,question_id: @question.id),method: :put  do |form| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="field">
+      <%= form.text_area :text, id: :answer_text,'data-provide': "markdown",rows: "10" %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<script>
+
+
+
+$("#answer_text").markdown({autofocus:false});
+
+
+</script>

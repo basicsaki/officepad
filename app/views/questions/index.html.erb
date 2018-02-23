@@ -1,35 +1,70 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Questions</h1>
+    <!-- Main -->
+      <section id="main" class="wrapper style1" style="width:100%;padding:40px;">
+        <header class="major" style="margin:10px;width:100%;text-align:left;background:rgba(74, 205, 233, 0.4);border-radius:10px;padding:20px;">
+          <div class="pull-left">
+            <h2 style="margin:5px !important"><%= @category.name%></h2>
+            <p style="color:rgba(0,0,0,0.5);margin:5px !important">Questions related to <%= @category.name%></p>
+          </div>
+          <div class="pull-right">
+            <%= link_to 'New Question', new_category_question_path %>
+          </div>
+          <div style="clear:both">
+          </div>
+        </header>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Asked by</th>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <form action="/search">
+        <div class="row" style="width:80%;margin:20px auto;">
+          <div class="8u" style="padding:0px;">
+            <input type="text" placeholder="Search questions across categories.." name="q" >
+          </div>
+          <div class="2u">
+            <button type="submit">Submit</button>
+          </div>
+        </div>
+        </form>
 
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.name %></td>
-        <td><%= question.description %></td>
-        <td><%= question.asked_by %></td>
-        <td><%= question.upvotes %></td>
-        <td><%= question.downvotes %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <div class="container">
+          <div class="row" style="padding-left: 0px !important;margin-left: 0px !important;">
+            <div class="2u" style="padding-left: 0px !important;" >
+              <section style="text-align: left;padding:10px;">
+                <h3>Categories</h3>
+                <ul class="alt">
+                  <% @categories.each do |category| %>
+                    <li><%= link_to category.name,category_questions_path(:category_id=> category.id)%></li>
+                  <% end%>
+                </ul>
+              </section>
+            </div>
 
-<br>
+            <div class="8u skel-cell-important" style="padding:40px;margin-top:20px;">
+              <% @questions.each do |question|%>
+              <section>
+                <h2><%= link_to question.name,category_question_path(:category_id => @category.id,:id=>question.id ) %>    
+                </h2>
+                <p style="font-size:10px;"><%= question.updated_at.strftime("%d %B %Y")%></p>
+                <p><%= markdown("#{question.description.truncate(300)}") if question.description%></p>
+              </section>
+              <hr />
+              <% end%>
+              <div style="width: 100%;text-align: center;"> 
+               <%= will_paginate @questions %>
+              </div>
+            </div>
 
-<%= link_to 'New Question', new_question_path %>
+          </div>
+          <hr class="major" />
+          
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+

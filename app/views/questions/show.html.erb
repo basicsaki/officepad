@@ -1,29 +1,86 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @question.name %>
-</p>
+    <!-- Main -->
+      <section id="main" class="wrapper style1" style="width:100%;padding:40px;">
+        <header class="major" style="margin:10px;width:100%;text-align:left;background:rgba(74, 205, 233, 0.4);border-radius:10px;padding:20px;">
+          <div class="pull-left">
+            <h2 style="margin:5px !important"><%= link_to @question.name,category_question_path(:category_id => @category.id,:id=>@question.id ) %></h2>
+            
+          </div>
+          <div class="pull-right">
+            <%= link_to "Back",category_questions_path(:category_id => @category.id ) %>
+          </div>
+          <div style="clear:both">
+            Asked By : <%= @question.owner.email %> 
+            <% if can? :update, @question %>
+                |  <%= link_to "Change", edit_category_question_path(:category_id=>@category.id,:question_id=>@question.id) %> 
+            <% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @question.description %>
-</p>
+            <% if can? :delete, @question %>
+                |  <%= link_to "Delete", category_question_path(:category_id=>@category.id,:question_id=>@question.id),:method=>:delete, :confirm => "Are you sure?" %> 
+            <% end %>
 
-<p>
-  <strong>Asked by:</strong>
-  <%= @question.asked_by %>
-</p>
 
-<p>
-  <strong>Upvotes:</strong>
-  <%= @question.upvotes %>
-</p>
+          </div>
+        </header>
 
-<p>
-  <strong>Downvotes:</strong>
-  <%= @question.downvotes %>
-</p>
+        <div class="container">
+          <div class="row" style="padding-left: 0px !important;margin-left: 0px !important;">
+            <div class="2u" style="padding-left: 0px !important;" >
+              <section style="text-align: left;padding:10px;">
+                <h3>Recommended Questions</h3>
+                <ul class="alt">
+                  <% @recommended_questions.each do |question| %>
+                    <li><%= link_to question.name,category_question_path(:category_id => @category.id,:id=>question.id )%></li>
+                  <% end%>
+                </ul>
+              </section>
+            </div>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+            <div class="8u skel-cell-important" style="padding:40px;margin-top:20px;">
+              <section>
+                <h2></h2>
+                <p><%= markdown(@question.description) %></p>
+              </section>
+              <hr />
+              <h3>Answers</h3>
+              <div id="answers">
+                <% @answers.each do |answer|%>
+                  <section id="answer_<%= answer.id%>">
+                    <h2></h2>
+                    <p><%= markdown(answer.text) %></p>
+                    <p>-<%= answer.owner.name_or_email %> | <%= answer.updated_at.strftime("%H:%M  |  %d %B")%> 
+                      <% if can? :update, answer %>
+                       | <%= link_to "Change", edit_category_question_answer_path(:category_id=>@category.id,:question_id=>@question.id,:answer_id=>answer.id,:id=>answer.id) %>
+                      <% end %>
+
+                      <% if can? :delete, answer %>
+                       | <%= link_to "Delete", category_question_answer_path(:category_id=>@category.id,:question_id=>@question.id,:answer_id=>answer.id,id: answer.id), :method=>:delete, :remote=>true, :confirm => "Are you sure?" %>
+                      <% end %>
+                    <hr />
+
+                  </section>
+                <% end%>
+              </div>
+              <div style="width: 100%;text-align: center;"> 
+                  <%= will_paginate @answers %>
+              </div>
+            <hr />
+            <%= form_for @question.answers.build,url: category_question_answers_path(category_id: @category.id,question_id: @question.id),method: :post,remote: true do |f|%>
+                <div class="field">
+                    <%= f.text_area :text, id: :answer_text,'data-provide': "markdown",rows: "5",placeholder: "Type your answer here" %>
+                </div>
+
+                <div class="field">
+                    <%= f.submit "Submit" %>
+                </div>
+            <% end%>
+            </div>
+          </div>
+          <hr class="major" />
+        </div>
+      </section>
+
+<script type="text/javascript">
+  $("#answer_text").markdown({autofocus:false})
+</script>
+

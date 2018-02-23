@@ -20,18 +20,26 @@ class AnswersController < ApplicationController
 
   # GET /answers/1/edit
   def edit
+    @question = @answer.question
+    @category = @question.category
   end
 
   # POST /answers
   # POST /answers.json
   def create
     @answer = Answer.new(answer_params)
+    @answer.question_id = params[:question_id]
+    @question = @answer.question
+    @category = @question.category
+    @answer.owner = current_user
 
     respond_to do |format|
       if @answer.save
         format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
+        format.js { render :create }
         format.json { render :show, status: :created, location: @answer }
       else
+        format.js { render :create }
         format.html { render :new }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
@@ -41,9 +49,12 @@ class AnswersController < ApplicationController
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
   def update
+    @question = @answer.question
+    @category = @question.category
+    
     respond_to do |format|
       if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
+        format.html { redirect_to category_question_path(:category_id=>@category.id,:id=>@question.id, :anchor => "answer_#{@answer.id}"), notice: 'Answer was successfully updated.' }
         format.json { render :show, status: :ok, location: @answer }
       else
         format.html { render :edit }
@@ -55,8 +66,10 @@ class AnswersController < ApplicationController
   # DELETE /answers/1
   # DELETE /answers/1.json
   def destroy
+    @id="answer_#{params[:answer_id]}"
     @answer.destroy
     respond_to do |format|
+      format.js {render :destroy}
       format.html { redirect_to answers_url, notice: 'Answer was successfully destroyed.' }
       format.json { head :no_content }
     end
@@ -70,6 +83,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:answered_by, :question_id, :upvotes, :downvotes)
+      params.require(:answer).permit(:question_id, :text, :upvotes, :downvotes)
     end
 end

@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:omniauthable,omniauth_providers: [:google_oauth2]
+	
+	has_many :user_roles,class_name: "UserRole"
+	has_many :roles, :through => :user_roles,class_name: "Role"
+    
 
 	def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
 	    data = access_token.info
@@ -22,6 +26,19 @@ class User < ApplicationRecord
 	        )
 	      end
 	   end
+	end
+
+
+	def check_roles
+		if self.roles == []
+			return ["user"]
+		else
+			return user.roles.map(&:name)
+		end
+	end
+
+	def name_or_email
+		self.name.blank? ? self.email : self.name 
 	end
    
 end

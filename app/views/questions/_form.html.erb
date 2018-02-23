@@ -1,4 +1,4 @@
-<%= form_with(model: question, local: true) do |form| %>
+<%= form_for @question,url: category_questions_path(category_id: @category.id),method: :post  do |form| %>
   <% if question.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -12,31 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :question_name %>
+    <%= form.text_field :name, id: :question_name,placeholder: "Title" %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :question_description %>
+    <%= form.text_area :description, id: :question_description,'data-provide': "markdown",rows: "10" %>
   </div>
 
-  <div class="field">
-    <%= form.label :asked_by %>
-    <%= form.number_field :asked_by, id: :question_asked_by %>
-  </div>
-
-  <div class="field">
-    <%= form.label :upvotes %>
-    <%= form.number_field :upvotes, id: :question_upvotes %>
-  </div>
-
-  <div class="field">
-    <%= form.label :downvotes %>
-    <%= form.number_field :downvotes, id: :question_downvotes %>
-  </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+<script>
+$("#question_description").markdown({autofocus:false})
+</script>

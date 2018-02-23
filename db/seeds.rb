@@ -4,4 +4,10 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   Character.create(name: 'Luke', movie: movies.first)n
+
+arr=["Ruby","Ruby On Rails","Linux","Deployment","Documentation","APIs","HR policy","Vacancies","Movies"]
+
+arr.each do |el|
+	Category.where(name: el).first_or_create
+end

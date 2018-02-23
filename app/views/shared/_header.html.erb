@@ -2,17 +2,28 @@
 			<header id="header" class="skel-layers-fixed">
 				<h1><a href="/">Office Pad</a></h1>
 				<nav id="nav">
-					<ul>
-						<li><a href="/pages/about">About</a></li>
-						<li><a href="/pages/contact">Contact</a></li>
-						<li><a href="right-sidebar.html">Right Sidebar</a></li>
-				        <% if user_signed_in? %>
-				        	<li>Signed in as <%= current_user.name %>. Not you?
-				        	<%= link_to "Sign out", destroy_user_session_path,:method => :delete %></li>
-				        <% else %>
-				        	<li><%= link_to "Sign in", new_user_session_path,class: "button special" %></li>
-				        	
-				        <% end %>
-					</ul>
+					
+						<ul class="pull-left" style="margin-left:200px;">
+							<li><a href="/">Home</a></li>
+							<li><a href="/categories/1/questions">Questions</a></li>
+							<li><a href="/suggestions">Suggestions</a></li>
+							<li><a href="/notice_boards">Notices</a></li>
+						</ul>
+
+
+
+						<ul class="pull-right">
+							<li><a href="/pages/about">About</a></li>
+							<li><a href="/pages/contact">Contact</a></li>
+					        <% if user_signed_in? %>
+					        	<li><!--<%= current_user.name if current_user.name %>-->
+					        	<%= link_to "Sign out", destroy_user_session_path,:method => :delete %></li>
+					        <% else %>
+					        	<li><%= link_to "Sign in", new_user_session_path,class: "button special" %></li>
+					        <% end %>
+					    </ul>
+
 				</nav>
 			</header>
+
+			

@@ -26,14 +26,9 @@
   <% unless (params[:controller]=="pages")%>
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
-          <%= bootstrap_flash %>
           <%= yield %>
-        </div>
       </div><!--/row-->  
-      <% if params[:controller]=="questions" %>
-        <%= render "shared/sidebar" %>
-      <% end %>
+
     </div> <!-- /container -->
     <%else%>
           <%= yield %>

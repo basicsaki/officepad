@@ -1,0 +1,13 @@
+<section id="answer_<%= @answer.id%>">
+	<h2></h2>
+	<p><%= markdown(@answer.text) %></p>
+	<p>-<%= @answer.owner.name_or_email %> | <%= @answer.updated_at.strftime("%H:%M  |  %d %B")%> 
+	<% if can? :update, @answer %>
+	| <%= link_to "Change", edit_category_question_answer_path(:category_id=>@category.id,:question_id=>@question.id,:answer_id=>@answer.id,:id=>@answer.id) %>
+	<% end %>
+
+	<% if can? :delete, @answer %>
+	| <%= link_to "Delete", category_question_answer_path(:category_id=>@category.id,:question_id=>@question.id,:answer_id=>@answer.id,id: @answer.id), :method=>:delete, :remote=>true, :confirm => "Are you sure?" %>
+	<% end %>
+	<hr />
+</section>

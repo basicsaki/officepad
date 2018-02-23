@@ -13,7 +13,6 @@
             <li><%= link_to "Contact", "/pages/contact"%></li>
             <li><%= link_to "Ask Question", "/questions/new"%></li>
             <li><%= link_to "Browse", "/questions"%></li>
-
           </ul>
 
           <ul class="pull-left">
@@ -23,10 +22,8 @@
             <% else %>
             <%= link_to "Sign up", new_user_registration_path %> or
             <%= link_to "Sign in", new_user_session_path %>
-            
             <%= link_to "Sign in with Google", omniauth_authorize_path(:user,:google_oauth2) %>
             <% end %>
-
           </ul>
           <!--li><%= link_to "Link3", "/path3"%></li-->
           </ul>
