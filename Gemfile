@@ -32,20 +32,31 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 gem 'will_paginate', '~> 3.1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#gem for authentication
 gem "devise"
+
+#gem for google auth
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+
+#gem for frontend
 gem "font-awesome-rails"
+
+#gem for parsing markdown
 gem "redcarpet"
+
+#gem for bootstrap
 gem "twitter-bootstrap-rails"
+
+#authorization gem
 gem 'cancancan', '~> 2.0'
 
+#elastic search
 gem  'elasticsearch-model'
 gem  'elasticsearch-rails'
 
