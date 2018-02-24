@@ -13,6 +13,4 @@ Things you may want to cover:
 
 * System dependencies : RVM,ruby,elasticsearch,java
 
-* Configuration
-
 * Database creation: rake db:create,rake db:migrate,rake db:seed

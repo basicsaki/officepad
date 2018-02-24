@@ -45,4 +45,4 @@ class Question < ApplicationRecord
 
 end
 
-Question.import
+Question.import(force: true)
