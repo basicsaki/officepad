@@ -18,7 +18,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
-  config.omniauth :google_oauth2, "141696532334-ff3vvdj9mj0r532cer2suq411rme73qf.apps.googleusercontent.com", "PRUwW4g50_AMYdj4hieDKc2J", {
+  config.omniauth :google_oauth2, ENV["google_client_id"], ENV["google_client_key"], {
     scope: "email"
   }
 

@@ -79,6 +79,8 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.21)
+    figaro (1.1.1)
+      thor (~> 0.14)
     font-awesome-rails (4.7.0.3)
       railties (>= 3.2, < 5.2)
     globalid (0.4.1)
@@ -139,6 +141,7 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    pg (0.21.0)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -242,6 +245,7 @@ DEPENDENCIES
   devise
   elasticsearch-model
   elasticsearch-rails
+  figaro
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -249,6 +253,7 @@ DEPENDENCIES
   mysql2 (>= 0.3.18, < 0.5)
   omniauth
   omniauth-google-oauth2
+  pg
   pry
   puma (~> 3.7)
   rails (~> 5.1.5)
