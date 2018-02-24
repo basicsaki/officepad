@@ -1,138 +1,127 @@
-		<!-- Banner -->
-			<section id="banner">
-				<div class="inner">
-					<h2>Office Pad<br />
-					<p style="font-size:12px;">Internal office management</p></h2>
-					
-					<ul class="actions">
-						<li><a href="#links" class="button special">Links</a></li>
-						<li><a href="#contacts" class="button alt">Contacts</a></li>
-					</ul>
-				</div>
-			</section>
-
-		<!-- One -->
-			<section id="links" class="wrapper style1">
-				<header class="major">
-					<h2>Links</h2>
-					<p></p>
-				</header>
-				<div class="container">
-					<div class="row">
-
-						<div class="4u">
-							<section class="special box">
-								<a href="/categories/1/questions"><i class="icon fa-area-chart major"></i></a>
-								<h3>Question Box</h3>
-								<p>A place for employees to help each other.</p>
-							</section>
-						</div>
-						<div class="4u">
-							<section class="special box">
-								<a href="/suggestions"><i class="icon fa-refresh major"></i></a>
-								<h3>Suggestion Box</h3>
-								<p>Employees can drop in suggestions for the management team for transparent processes in the company.</p>
-							</section>
-						</div>
-						<div class="4u">
-							<section class="special box">
-								<a href="/notice_boards"><i class="icon fa-cog major"></i></a>
-								<h3>Notice Board</h3>
-								<p>Management can post latest updates regarding any event or change in the company  processes.</p>
-							</section>
-						</div>
-					</div>
-				</div>
-			</section>
+	<!-- Banner -->
+	<section id="banner">
+		<div class="inner">
+			<h2>Office Pad<br />
+			<p class="banner head">Internal office management</p></h2>
 			
-		<!-- Two -->
-			<section id="contacts" class="wrapper style2">
-				<header class="major">
-					<h2>Contacts</h2>
-					<p>Directly contact fellow team members</p>
-				</header>
-				<div class="container">
-					<div class="row">
-						<div class="6u">
-							<section class="special">
-								<!--a href="#" class="image fit"><img src="<%= asset_path('banner.jpg')%>" alt="" /></a-->
-								<a href="/questions"><i class="icon fa-area-chart major"></i></a>
-								<h3>Technical Team</h3>
-								<p>Directly contact team members working remotely throughout the globe</p>
+			<ul class="actions">
+				<li><a href="#links" class="button special">Links</a></li>
+				<li><a href="#contacts" class="button alt">Contacts</a></li>
+			</ul>
+		</div>
+	</section>
 
-							</section>
-						</div>
-						<div class="6u">
-							<section class="special">
-								<!--a href="#" class="image fit"><img src="<%= asset_path('banner.jpg')%>" alt="" /></a-->
-								<a href="/questions"><i class="icon fa-area-chart major"></i></a>
-								<h3>Management Team</h3>
-								<p>Directly contact members working with the management processes</p>
-
-							</section>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section id="contacts" class="wrapper style1">
-			<header class="major">
-			<h2>Notices</h2>
+	<!-- One -->
+	<section id="links" class="wrapper style1">
+		<header class="major">
+			<h2>Links</h2>
 			<p></p>
-			</header>
-			<div class="container" style="width:100%;margin:20px auto;">
+		</header>
+		<div class="container">
+			<div class="row">
 
-			<% @notes.each do |nb|%>
-			<div class="note">
-			<div class="note_cnt">
-			<textarea class="title" placeholder="Enter note title" name="notice_board[name]"><%= nb.name%></textarea>
-			<textarea class="cnt" placeholder="Enter note description here" name="notice_board[description]"><%= nb.description%></textarea>
-			</div>
-			</div>
-			<% end%>
-
-
-			</div>
-			</section>
-
-
-		<!-- Three -->
-			<section id="board" class="wrapper style1">
-				<div class="container">
-					<div class="row">
-						<div class="8u">
-							<section>
-								<h2>To remember</h2>
-								<a href="#" class="image fit"><img src="<%= asset_path('cookpad-office.jpg')%>" alt="" /></a>
-								<p>Our philosophy:
-									<br />
-									Cooking isn’t just a matter of putting together ingredients.
-								When you cook, you choose. You choose what to buy, what to eat, and how to nourish yourself, your family, and friends. You choose how to give back to communities, both local and global. When you cook, you choose to become a maker of tomorrow’s world.
-								Here at Cookpad, each day is about inspiring more people to make these choices.
-								Our work is about making everyday cooking fun for all, because we see a brighter future. And we believe that the power of cooking will get us there. That is the Cookpad mission.</p>
-							</section>
-						</div>
-						<div class="4u">
-							
-							<hr />
-							<section>
-								<h3>Important Links</h3>
-								<ul class="alt">
-									<li><a href="https://info.cookpad.com/en/pr/news">News</a></li>
-									<li><a href="https://info.cookpad.com/en/contacts">Contact</a></li>
-									
-								</ul>
-							</section>
-						</div>
-					</div>
+				<div class="4u">
+					<section class="special box">
+						<a href="/categories/1/questions"><i class="icon fa-area-chart major"></i></a>
+						<h3>Question Box</h3>
+						<p>A place for employees to help each other.</p>
+					</section>
 				</div>
-			</section>
+				<div class="4u">
+					<section class="special box">
+						<a href="/suggestions"><i class="icon fa-refresh major"></i></a>
+						<h3>Suggestion Box</h3>
+						<p>Employees can drop in suggestions for the management team for transparent processes in the company.</p>
+					</section>
+				</div>
+				<div class="4u">
+					<section class="special box">
+						<a href="/notice_boards"><i class="icon fa-cog major"></i></a>
+						<h3>Notice Board</h3>
+						<p>Management can post latest updates regarding any event or change in the company  processes.</p>
+					</section>
+				</div>
+			</div>
+		</div>
+	</section>
+			
+	<!-- Two -->
+	<section id="contacts" class="wrapper style2">
+		<header class="major">
+			<h2>Contacts</h2>
+			<p>Directly contact fellow team members</p>
+		</header>
+		<div class="container">
+			<div class="row">
+				<div class="6u">
+					<section class="special">
+						<!--a href="#" class="image fit"><img src="<%= asset_path('banner.jpg')%>" alt="" /></a-->
+						<a href="/questions"><i class="icon fa-area-chart major"></i></a>
+						<h3>Technical Team</h3>
+						<p>Directly contact team members working remotely throughout the globe</p>
 
+					</section>
+				</div>
+				<div class="6u">
+					<section class="special">
+						<!--a href="#" class="image fit"><img src="<%= asset_path('banner.jpg')%>" alt="" /></a-->
+						<a href="/questions"><i class="icon fa-area-chart major"></i></a>
+						<h3>Management Team</h3>
+						<p>Directly contact members working with the management processes</p>
 
+					</section>
+				</div>
+			</div>
+		</div>
+	</section>
 
-			<!-- Two -->
-
-
-
+	<section id="contacts" class="wrapper style1">
+		<header class="major">
+			<h2>Notices</h2>
+				<p></p>
+		</header>
 		
+		<div class="container notes">
+		<% @notes.each do |nb|%>
+			<div class="note">
+				<div class="note_cnt">
+					<textarea class="title" placeholder="Enter note title" name="notice_board[name]"><%= nb.name%></textarea>
+					<textarea class="cnt" placeholder="Enter note description here" name="notice_board[description]"><%= nb.description%></textarea>
+				</div>
+			</div>
+		<% end%>
+		</div>
+	</section>
+
+
+<!-- Three -->
+	<section id="board" class="wrapper style1">
+		<div class="container">
+			<div class="row">
+				<div class="8u">
+					<section>
+						<h2>To remember</h2>
+						<a href="#" class="image fit"><img src="<%= asset_path('cookpad-office.jpg')%>" alt="" /></a>
+						<p>Our philosophy:
+							<br />
+							Cooking isn’t just a matter of putting together ingredients.
+						When you cook, you choose. You choose what to buy, what to eat, and how to nourish yourself, your family, and friends. You choose how to give back to communities, both local and global. When you cook, you choose to become a maker of tomorrow’s world.
+						Here at Cookpad, each day is about inspiring more people to make these choices.
+						Our work is about making everyday cooking fun for all, because we see a brighter future. And we believe that the power of cooking will get us there. That is the Cookpad mission.</p>
+					</section>
+				</div>
+				<div class="4u">
+					<hr />
+					<section>
+						<h3>Important Links</h3>
+						<ul class="alt">
+							<li><a href="https://info.cookpad.com/en/pr/news">News</a></li>
+							<li><a href="https://info.cookpad.com/en/contacts">Contact</a></li>
+							
+						</ul>
+					</section>
+				</div>
+			</div>
+		</div>
+	</section>
 		

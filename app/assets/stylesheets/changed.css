@@ -1,0 +1,46 @@
+.banner.head{
+	font-size:12px !important;
+}
+
+.notes{
+	 width:100% !important;
+	 margin:20px auto;
+}
+
+.main_section{
+	width:100% !important;
+	padding:40px !important;
+}
+
+.main_header{
+	margin:10px !important;
+	width:100% !important;
+	text-align:left !important;
+	background:rgba(74, 205, 233, 0.4);
+	border-radius:10px;
+	padding:20px;
+}
+
+.side{
+	 padding-left: 0px !important;
+	 margin-left: 0px !important;
+}
+
+.side_small{
+	padding-left: 0px !important;
+} 
+
+.recommed{
+	text-align: left !important;
+	padding:10px;
+}
+
+.markdown{
+	padding:40px !important;
+	margin-top:20px !important;
+}
+
+.paginate{
+	width: 100%;
+	text-align: center;
+}

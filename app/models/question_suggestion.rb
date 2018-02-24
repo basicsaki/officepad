@@ -1,2 +1,0 @@
-class QuestionSuggestion < ApplicationRecord
-end

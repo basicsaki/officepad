@@ -1,7 +1,7 @@
 
     <!-- Main -->
-      <section id="main" class="wrapper style1" style="width:100%;padding:40px;">
-        <header class="major" style="margin:10px;width:100%;text-align:left;background:rgba(74, 205, 233, 0.4);border-radius:10px;padding:20px;">
+      <section id="main" class="wrapper style1 main_section">
+        <header class="major main_header">
           <div class="pull-left">
             <h2 style="margin:5px !important"><%= link_to @suggestion.name,suggestion_path(:id=>@suggestion.id ) %></h2>
             
@@ -24,9 +24,9 @@
         </header>
 
         <div class="container">
-          <div class="row" style="padding-left: 0px !important;margin-left: 0px !important;">
-            <div class="2u" style="padding-left: 0px !important;" >
-              <section style="text-align: left;padding:10px;">
+          <div class="row side">
+            <div class="2u side_small" >
+              <section class="recommend">
                 <h3>Other</h3>
                 <ul class="alt">
                   <% @suggestions.each do |suggestion| %>
@@ -36,7 +36,7 @@
               </section>
             </div>
 
-            <div class="8u skel-cell-important" style="padding:40px;margin-top:20px;">
+            <div class="8u skel-cell-important markdown">
               <section>
                 <h2></h2>
                 <p><%= markdown(@suggestion.text) %></p>
@@ -61,7 +61,7 @@
                   </section>
                 <% end%>
               </div>
-              <div style="width: 100%;text-align: center;"> 
+              <div class="paginate"> 
                   <%= will_paginate @comments %>
               </div>
             <hr />
