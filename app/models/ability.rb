@@ -15,8 +15,6 @@ class Ability
       can :delete, Answer do |answer|
         answer.try(:owner) == user
       end
-
-
       can :create, Question
       can :update, Question do |question|
         question.try(:owner) == user
@@ -29,16 +27,22 @@ class Ability
       can :update, NoticeBoard do |notice|
         notice.try(:owner) == user
       end
-      can :delete, Answer do |answer|
-        answer.try(:owner) == user
-      end
+
 
       can :create, Suggestion
       can :update, Suggestion do |suggestion|
         suggestion.try(:owner) == user
       end
-      can :delete, Answer do |answer|
-        answer.try(:owner) == user
+      can :delete, Suggestion do |suggestion|
+        suggestion.try(:owner) == user
+      end
+
+      can :create, Comment
+      can :update, Comment do |comment|
+        comment.try(:owner) == user
+      end
+      can :delete, Comment do |comment|
+        comment.try(:owner) == user
       end
 
     end

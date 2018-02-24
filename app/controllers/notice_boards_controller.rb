@@ -4,7 +4,7 @@ class NoticeBoardsController < ApplicationController
   # GET /notice_boards
   # GET /notice_boards.json
   def index
-    @notice_boards = NoticeBoard.all
+    @notice_boards = NoticeBoard.all.order("updated_at desc")
   end
 
   # GET /notice_boards/1
@@ -42,7 +42,7 @@ class NoticeBoardsController < ApplicationController
   def update
     respond_to do |format|
       if @notice_board.update(notice_board_params)
-        format.html { redirect_to @notice_board, notice: 'Notice board was successfully updated.' }
+        format.html { redirect_to notice_boards_path, notice: 'Notice board was successfully updated.' }
         format.json { render :show, status: :ok, location: @notice_board }
       else
         format.html { render :edit }

@@ -1,20 +1,24 @@
 class SuggestionsController < ApplicationController
+  before_action :authenticate_user!,only: [:new, :edit, :update, :destroy,:create]
   before_action :set_suggestion, only: [:show, :edit, :update, :destroy]
 
   # GET /suggestions
   # GET /suggestions.json
   def index
-    @suggestions = Suggestion.all
+    @suggestions = Suggestion.all.page(params[:page]).order('updated_at DESC')
   end
 
   # GET /suggestions/1
   # GET /suggestions/1.json
   def show
+    @suggestions = Suggestion.first(5)
+    @comments = @suggestion.comments.page(params[:page]).order('updated_at DESC')
   end
 
   # GET /suggestions/new
   def new
     @suggestion = Suggestion.new
+
   end
 
   # GET /suggestions/1/edit
@@ -25,6 +29,7 @@ class SuggestionsController < ApplicationController
   # POST /suggestions.json
   def create
     @suggestion = Suggestion.new(suggestion_params)
+    @suggestion.owner = current_user
 
     respond_to do |format|
       if @suggestion.save

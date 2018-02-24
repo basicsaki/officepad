@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   def base_variables
   	@categories = Category.all
+    @suggestions = Suggestion.all
   end
 
 

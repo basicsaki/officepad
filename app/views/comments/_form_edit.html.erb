@@ -1,0 +1,26 @@
+<%= form_for @comment,url: suggestion_comment_path(suggestion_id: @suggestion.id,id: @comment.id),method: :put  do |form| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="field">
+      <%= form.text_area :text, id: :comment_text,'data-provide': "markdown",rows: "10" %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<script>
+$("#comment_text").markdown({autofocus:false});
+</script>

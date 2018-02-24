@@ -11,3 +11,10 @@ arr=["Ruby","Ruby On Rails","Linux","Deployment","Documentation","APIs","HR poli
 arr.each do |el|
 	Category.where(name: el).first_or_create
 end
+
+if NoticeBoard.all.length!=8
+	until (NoticeBoard.all.length==8)
+		NoticeBoard.create!
+	end
+end
+

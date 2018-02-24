@@ -1,30 +1,31 @@
+<link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
 
-<h1>Notice Boards</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div id="main_div" style="width:100%;">
+<div style="margin:20px auto;">
+  <h2>Notice Board</h2>
 
-  <tbody>
-    <% @notice_boards.each do |notice_board| %>
-      <tr>
-        <td><%= notice_board.user_id %></td>
-        <td><%= notice_board.name %></td>
-        <td><%= notice_board.description %></td>
-        <td><%= link_to 'Show', notice_board %></td>
-        <td><%= link_to 'Edit', edit_notice_board_path(notice_board) %></td>
-        <td><%= link_to 'Destroy', notice_board, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @notice_boards.each do |nb|%>
+            <div class="note">
+            <div class="note_cnt">
 
-<br>
+          <%= form_tag notice_board_path(nb),:method=>:put do%>
 
-<%= link_to 'New Notice Board', new_notice_board_path %>
+            <textarea class="title" placeholder="Enter note title" name="notice_board[name]"><%= nb.name%></textarea>
+            <textarea class="cnt" placeholder="Enter note description here" name="notice_board[description]"><%= nb.description%></textarea>
+            <%= submit_tag "Submit",id: "submit_#{nb.id}",style: "display:none;"%>
+            <a><i class="glyphicon glyphicon-ok" onClick=$("#submit_<%= nb.id%>").click();></i></a>
+
+          <% end%>
+                      </div>
+          </div>  
+  <% end%>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+    $('i.glyphicon').click(function(){ $('#my_form').submit()});
+</script>
+
+

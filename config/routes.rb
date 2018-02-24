@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :user_roles
   resources :roles
   resources :notice_boards
-  resources :suggestions
+  resources :suggestions do 
+    resources :comments
+  end
   resources :categories do
     resources :questions do
       resources :answers do 

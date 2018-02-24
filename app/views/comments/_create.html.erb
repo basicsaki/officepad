@@ -1,0 +1,13 @@
+<section id="comment_<%= @comment.id%>">
+	<h2></h2>
+	<p><%= markdown(@comment.text) %></p>
+	<p>-<%= @comment.owner.name_or_email %> | <%= @comment.updated_at.strftime("%H:%M  |  %d %B")%> 
+	<% if can? :update, @comment %>
+	| <%= link_to "Change", edit_suggestion_comment_path(:suggestion_id=>@suggestion.id,:id=>@comment.id) %>
+	<% end %>
+
+	<% if can? :delete, @comment %>
+	| <%= link_to "Delete", suggestion_comment_path(:suggestion_id=>@suggestion.id,id: @comment.id), :method=>:delete, :remote=>true, :confirm => "Are you sure?" %>
+	<% end %>
+	<hr />
+</section>

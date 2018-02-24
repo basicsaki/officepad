@@ -1,30 +1,62 @@
 
-<h1>Suggestions</h1>
+    <!-- Main -->
+      <section id="main" class="wrapper style1" style="width:100%;padding:40px;">
+        <header class="major" style="margin:10px;width:100%;text-align:left;background:rgba(74, 205, 233, 0.4);border-radius:10px;padding:20px;">
+          <div class="pull-left">
+            <h2 style="margin:5px !important">Suggestions</h2>
+            <p style="color:rgba(0,0,0,0.5);margin:5px !important">For a better work culture</p>
+          </div>
+          <div class="pull-right">
+            <%= link_to 'New Suggestion', new_suggestion_path %>
+          </div>
+          <div style="clear:both">
+          </div>
+        </header>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @suggestions.each do |suggestion| %>
-      <tr>
-        <td><%= suggestion.user_id %></td>
-        <td><%= suggestion.name %></td>
-        <td><%= suggestion.text %></td>
-        <td><%= link_to 'Show', suggestion %></td>
-        <td><%= link_to 'Edit', edit_suggestion_path(suggestion) %></td>
-        <td><%= link_to 'Destroy', suggestion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <div class="container">
+          <div class="row" style="padding-left: 0px !important;margin-left: 0px !important;">
+            <div class="2u" style="padding-left: 0px !important;" >
+              <section style="text-align: left;padding:10px;">
+                <h3>Other</h3>
+                <ul class="alt">
+                  <% @suggestions.each do |suggestion| %>
+                    <li><%= link_to suggestion.name,suggestion_path(:id=> suggestion.id)%></li>
+                  <% end%>
+                </ul>
+              </section>
+            </div>
 
-<br>
+            <div class="8u skel-cell-important" style="padding:40px;margin-top:20px;">
+              <% @suggestions.each do |suggestion|%>
+              <section>
+                <h2><%= link_to suggestion.name,suggestion_path(:id => suggestion.id ) %>    
+                </h2>
+                <p style="font-size:10px;"><%= suggestion.updated_at.strftime("%d %B %Y")%></p>
+                <p><%= markdown("#{suggestion.text.truncate(300)}") if suggestion.text %></p>
+              </section>
+              <hr />
+              <% end%>
+              <div style="width: 100%;text-align: center;"> 
+               <%= will_paginate @suggestions %>
+              </div>
+            </div>
 
-<%= link_to 'New Suggestion', new_suggestion_path %>
+          </div>
+          <hr class="major" />
+          
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+

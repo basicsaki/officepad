@@ -75,6 +75,28 @@
 				</div>
 			</section>
 
+			<section id="contacts" class="wrapper style1">
+			<header class="major">
+			<h2>Notice Board</h2>
+			<p></p>
+			</header>
+			<div class="container">
+			<div class="row">
+
+			<% @notes.each do |nb|%>
+			<div class="note">
+			<div class="note_cnt">
+			<textarea class="title" placeholder="Enter note title" name="notice_board[name]"><%= nb.name%></textarea>
+			<textarea class="cnt" placeholder="Enter note description here" name="notice_board[description]"><%= nb.description%></textarea>
+			</div>
+			</div>
+			<% end%>
+
+			</div>
+			</div>
+			</section>
+
+
 		<!-- Three -->
 			<section id="board" class="wrapper style1">
 				<div class="container">
@@ -105,6 +127,13 @@
 						</div>
 					</div>
 				</div>
-			</section>			
-			
+			</section>
+
+
+
+			<!-- Two -->
+
+
+
+		
 		
